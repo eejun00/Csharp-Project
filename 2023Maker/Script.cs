@@ -25,7 +25,7 @@ namespace _2023Maker
 
             Console.ReadKey(true); // 키 입력으로 넘어가도록
 
-            screen.ClearScreen();  // 키 입력시 화면 안쪽만 클리어
+            screen.ClearScreen();  // 키 입력시 화면 안쪽만 클리어하기
         }
     }
 
