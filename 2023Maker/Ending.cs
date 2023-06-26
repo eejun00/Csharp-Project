@@ -8,5 +8,6 @@ namespace _2023Maker
 {
     public class Ending
     {
+        public int endDate = 10;
     }
 }

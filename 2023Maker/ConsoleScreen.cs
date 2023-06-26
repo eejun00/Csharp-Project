@@ -9,7 +9,11 @@ namespace _2023Maker
 {
     public class ConsoleScreen
     {
-        State state = new State();
+        State state;
+        Daily daily;
+
+        //큰 화면 프린트 시작 (4,6)
+        //밑 화면 프린트 시작 (4,37)
         public void StartScreen()   // 시작화면 기능만 있음. 시간날때 꾸미기
         {
             Console.SetCursorPosition(15, 30);
@@ -34,8 +38,28 @@ namespace _2023Maker
             for (int i = 0; i< 10; i++)
             {
                 Console.SetCursorPosition(4, i+37);
-                Console.WriteLine("                                                               ");
+                Console.WriteLine("                                                                             ");
             }
+        }
+
+        public void ClearUnder()    //밑 콘솔창만 지우기
+        {
+            for (int i = 0; i< 10; i++)
+            {
+                Console.SetCursorPosition(4, i+37);
+                Console.WriteLine("                                                                             ");
+            }
+        }
+
+        public void ClickNext()
+        {
+            Console.SetCursorPosition(78, 45);
+            Console.Write("▼");
+            Console.ReadKey(true);
+            Console.SetCursorPosition(78, 45);
+            Console.Write("   ");
+
+
         }
 
         public void Status<T>(T state) where T : State // 날짜, 스탯 출력하는 함수
@@ -45,6 +69,7 @@ namespace _2023Maker
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("{0}일차\n",state.date);
             Console.ResetColor();
+            Console.WriteLine();
             Console.Write("  체력 ");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("♥ {0}   ", state.strength);
@@ -59,11 +84,11 @@ namespace _2023Maker
             Console.ResetColor();
             Console.Write("도덕성 ");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write("♣ {0}   ", state.intelligence);
+            Console.Write("♣ {0}   ", state.morality);
             Console.ResetColor();
             Console.Write("스트레스 ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write("♨ {0}", state.intelligence);
+            Console.Write("♨ {0}", state.stress);
             Console.ResetColor();
 
 
@@ -103,6 +128,57 @@ namespace _2023Maker
                 }
             }
             Console.WriteLine();
+        }
+
+        public void PrintBigOption<T>(T daily) where T : Daily
+        {           
+            Console.SetCursorPosition(12, 39);
+            Console.Write(daily.optionOne);
+            Console.SetCursorPosition(54, 39);
+            Console.Write(daily.optionTwo);
+            Console.SetCursorPosition(12, 42);
+            Console.Write(daily.optionThree);
+            Console.SetCursorPosition(54, 42);
+            Console.Write(daily.optionFour);
+        }
+
+        public void PrintOption<T>(T daily) where T : Daily
+        {
+            Console.SetCursorPosition(12, 39);
+            Console.Write(daily.firstOption);
+            Console.SetCursorPosition(54, 39);
+            Console.Write(daily.secondOption);
+            Console.SetCursorPosition(12, 42);
+            Console.Write(daily.thirdOption);
+            Console.SetCursorPosition(54, 42);
+            Console.Write(daily.fourthOption);
+        }
+
+        public bool AskAgain(string option)
+        {
+            daily = new Daily();
+            Console.SetCursorPosition(10, 45);
+            string question = "로 결정하시겠습니까? 결정하시려면 엔터를 눌러주세요.";
+            for (int i = 0; i< option.Length; i++)
+            {
+                Console.Write(option[i]);
+                Thread.Sleep(10);
+            }
+            for (int i = 0; i< question.Length; i++)
+            {                
+                Console.Write(question[i]);
+                Thread.Sleep(10);
+            }
+            System.ConsoleKeyInfo reselect = Console.ReadKey(true);
+            switch (reselect.Key)
+            {
+                case ConsoleKey.Enter:
+                    return true;
+                default:
+                    ClearUnder();
+                    PrintBigOption(daily);
+                    return false;
+            }
         }
 
     }
