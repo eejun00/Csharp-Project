@@ -23,6 +23,7 @@ namespace _2023Maker
             Script script = new Script();
             Daily daily = new Daily();
             Ending ending = new Ending();
+            Map map = new Map();
 
             //게임 화면이 잘보이게 하기위해 콘솔 사이즈 조정
             Console.SetWindowSize(150, 50);
@@ -40,6 +41,7 @@ namespace _2023Maker
                 //게임 진행 메인화면 출력
                 screen.Status(state);
                 screen.PrintBigOption(daily);
+
 
                 while (state.date < ending.endDate)
                 {

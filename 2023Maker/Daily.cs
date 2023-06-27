@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using System.Collections;
 
 namespace _2023Maker
 {
@@ -34,7 +35,228 @@ namespace _2023Maker
         //체력 상승이 주가 되는 첫번째 선택지 진행 내용
         public void FirstDailyOption<T>(ref T state) where T : State
         {
+            Map map1 = new Map();
+            Battle battle1 = new Battle();
+            Random random = new Random();
 
+            const int MAP_SIZE_X = 26;
+            const int MAP_SIZE_Y = 15;
+            const char PLAYER = '◎';
+            int playerHp = 100;
+            int y_axis = 5;
+            int x_axis = 5;
+            int surprise = default;
+
+            screen.ClearScreen();
+            map1.CreateMap();
+            map1.PrintMap();
+
+           
+            while (true)
+            {
+                Console.SetCursorPosition(5, 38);
+                Console.CursorVisible = false;
+                ConsoleKeyInfo keyInput = Console.ReadKey(true); //키입력을 받고 확인하는 내용
+
+                switch (keyInput.Key)
+                {
+
+                    case ConsoleKey.LeftArrow:
+                        if (x_axis <= 1)
+                        {
+                            /*Pass*/
+                        }
+                        else
+                        {
+                            if (x_axis > 1) // 이동 가능할 경우
+                            {
+
+                                if (map1.map[y_axis, (x_axis-1)] == '▲') // 산에 도착할 경우
+                                {
+                                    if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                    {
+                                        map1.map[y_axis, x_axis] = '▲';
+                                        map1.map[y_axis, --x_axis] = PLAYER;
+                                    }
+                                    else
+                                    {
+                                        map1.map[y_axis, x_axis] = 'ㅤ';
+                                        map1.map[y_axis, --x_axis] = PLAYER;
+                                    }
+                                    surprise = random.Next(1, 101);
+                                    if (surprise <= 17)
+                                    {
+                                        battle1.BattleStart(ref playerHp);
+                                        screen.ClearScreen();
+                                    }
+
+                                }
+
+                                else //그냥 이동시
+                                {
+                                    if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                    {
+                                        map1.map[y_axis, x_axis] = '▲';
+                                        map1.map[y_axis, --x_axis] = PLAYER;
+                                    }
+                                    else
+                                    {
+                                        map1.map[y_axis, x_axis] = 'ㅤ';
+                                        map1.map[y_axis, --x_axis] = PLAYER;
+                                    }
+                                }
+                            }
+
+
+                        }
+                        break;
+
+                    case ConsoleKey.RightArrow:
+                        if (x_axis < (MAP_SIZE_X-2)) // 이동 가능한 경우
+                        {
+
+
+                            if (map1.map[y_axis, (x_axis+1)] == '▲') // 산에 도착할 경우
+                            {
+                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                {
+                                    map1.map[y_axis, x_axis] = '▲';
+                                    map1.map[y_axis, ++x_axis] = PLAYER;
+                                }
+                                else
+                                {
+                                    map1.map[y_axis, x_axis] = 'ㅤ';
+                                    map1.map[y_axis, ++x_axis] = PLAYER;
+                                }
+                                surprise = random.Next(1, 101);
+                                if (surprise <= 17)
+                                {
+                                    battle1.BattleStart(ref playerHp);
+                                    screen.ClearScreen();
+                                }
+
+                            }
+                            else
+                            {
+                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                {
+                                    map1.map[y_axis, x_axis] = '▲';
+                                    map1.map[y_axis, ++x_axis] = PLAYER;
+                                }
+                                else
+                                {
+                                    map1.map[y_axis, x_axis] = 'ㅤ';
+                                    map1.map[y_axis, ++x_axis] = PLAYER;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            /*Pass*/
+                        }
+                        break;
+
+                    case ConsoleKey.UpArrow:
+                        if (y_axis <= 1)
+                        {
+                            /*Pass*/
+                        }
+
+                        else
+                        {
+                            if (map1.map[(y_axis-1), x_axis] == '▲')
+                            {
+                                surprise = random.Next(1, 101);
+                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                {
+                                    map1.map[y_axis, x_axis] = '▲';
+                                    map1.map[--y_axis, x_axis] = PLAYER;
+                                }
+                                else
+                                {
+                                    map1.map[y_axis, x_axis] = 'ㅤ';
+                                    map1.map[--y_axis, x_axis] = PLAYER;
+                                }
+                                if (surprise <= 17)
+                                {
+                                    battle1.BattleStart(ref playerHp);
+                                    screen.ClearScreen();
+                                }
+
+                            }
+                            else
+                            {
+                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                {
+                                    map1.map[y_axis, x_axis] = '▲';
+                                    map1.map[--y_axis, x_axis] = PLAYER;
+                                }
+                                else
+                                {
+                                    map1.map[y_axis, x_axis] = 'ㅤ';
+                                    map1.map[--y_axis, x_axis] = PLAYER;
+                                }
+                            }
+                        }
+
+                        break;
+
+                    case ConsoleKey.DownArrow:
+                        if (y_axis < (MAP_SIZE_Y-2))
+                        {
+
+
+                            if (map1.map[(y_axis+1), x_axis] == '▲')
+                            {
+                                surprise = random.Next(1, 101);
+                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                {
+                                    map1.map[y_axis, x_axis] = '▲';
+                                    map1.map[++y_axis, x_axis] = PLAYER;
+                                }
+                                else
+                                {
+                                    map1.map[y_axis, x_axis] = 'ㅤ';
+                                    map1.map[++y_axis, x_axis] = PLAYER;
+                                }
+                                if (surprise <= 17)
+                                {
+                                    battle1.BattleStart(ref playerHp);
+                                    screen.ClearScreen();
+                                }
+
+                            }
+                            else
+                            {
+                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                {
+                                    map1.map[y_axis, x_axis] = '▲';
+                                    map1.map[++y_axis, x_axis] = PLAYER;
+                                }
+                                else
+                                {
+                                    map1.map[y_axis, x_axis] = 'ㅤ';
+                                    map1.map[++y_axis, x_axis] = PLAYER;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n벽에 막혀 더이상 갈 수 없습니다.");
+                        }
+                        break;
+                    //case ConsoleKey.I:
+                    //    shop1.Printinven(inventory);
+                    //    Thread.Sleep(2000);
+                    //    Console.Clear();
+                    //    break;
+                    default:
+                        Console.WriteLine("\n\n입력이 잘못되었습니다.\n");
+                        break;
+                }
+                map1.PrintMap();
+            }
         }
 
         //매력 상승이 주가 되는 두번째 선택지 진행 내용

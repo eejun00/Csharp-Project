@@ -12,8 +12,8 @@ namespace _2023Maker
         State state;
         Daily daily;
 
-        //큰 화면 프린트 시작 (4,6)
-        //밑 화면 프린트 시작 (4,37)
+        //큰 화면 프린트 시작 (4,6) //큰 화면 프린트 끝 (80,35)
+        //밑 화면 프린트 시작 (4,37) //밑 화면 프린트 끝 (80,46)
         public void StartScreen()   // 시작화면 기능만 있음. 시간날때 꾸미기
         {
             Console.SetCursorPosition(15, 30);
