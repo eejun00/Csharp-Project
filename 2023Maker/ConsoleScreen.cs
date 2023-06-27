@@ -51,6 +51,7 @@ namespace _2023Maker
             }
         }
 
+        //게임 진행 스크립트 넘길때 입력이 필요한 경우 사용
         public void ClickNext()
         {
             Console.SetCursorPosition(78, 45);

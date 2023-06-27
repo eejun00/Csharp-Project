@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace _2023Maker
 {
@@ -13,7 +14,9 @@ namespace _2023Maker
         Script script = new Script();
         ConsoleScreen screen = new ConsoleScreen();
 
+        public List<string> place = new List<string>() { "체육관", "음식점", "옷가게", "서점" };
         public List<string> subjects = new List<string>() { "체육", "미술", "학문", "예법" };
+
 
         public string optionOne = "1.외출하기";
         public string optionTwo = "2.휴식하기";
@@ -23,21 +26,183 @@ namespace _2023Maker
 
         //하루 일과 진행옵션의 세부
         public string firstOption = "1.단련하기";
-        public string secondOption = "2.두번째 선택지";
+        public string secondOption = "2.번화가 놀러가기";
         public string thirdOption = "3.학교에 가기";
         public string fourthOption = "4.봉사활동 가기";
 
 
         //체력 상승이 주가 되는 첫번째 선택지 진행 내용
-        public void FirstDailyOption()
+        public void FirstDailyOption<T>(ref T state) where T : State
         {
-            
+
         }
 
         //매력 상승이 주가 되는 두번째 선택지 진행 내용
-        public void SecondDailyOption()
+        public void SecondDailyOption<T>(ref T state) where T : State
         {
+            Random random = new Random();
+            int stat1 = 10;
+            int stat2 = 20;
+            int todayPlace = default;
+            todayPlace = random.Next(0, place.Count);
 
+            screen.ClearScreen();
+            Console.SetCursorPosition(5, 38);
+
+            for (int i = 0; i < script.downtown[0].Length; i++)
+            {
+                Console.Write(script.downtown[0][i]);
+                Thread.Sleep(50);
+            }
+
+            Console.SetCursorPosition(5, 41);
+
+            for (int i = 0; i < script.downtown[1].Length; i++)
+            {
+                Console.Write(script.downtown[1][i]);
+                Thread.Sleep(50);
+            }
+            Console.Write("* {0} *입니다.", place[todayPlace]);
+
+            screen.ClickNext();
+            screen.ClearScreen();
+
+            switch (todayPlace)
+            {
+                case 0: //체육관
+                    Console.SetCursorPosition(5, 38);
+
+                    for (int i = 0; i < script.gym[0].Length; i++)
+                    {
+                        Console.Write(script.gym[0][i]);
+                        Thread.Sleep(50);
+                    }
+
+                    Console.SetCursorPosition(5, 41);
+
+                    for (int i = 0; i < script.gym[1].Length; i++)
+                    {
+                        if (script.gym[1][i] == '.')
+                        {
+                            Console.Write(script.gym[1][i]);
+                            Thread.Sleep(800);
+                        }
+                        else
+                        {
+                            Console.Write(script.gym[1][i]);
+                            Thread.Sleep(50);
+                        }
+                    }
+                    state.strength += stat1;
+                    state.charm += stat2;
+
+                    screen.ClearScreen();
+                    Console.SetCursorPosition(5, 38);
+                    Console.Write("보람찬 하루를 보내고 체력이 {0}, 매력이 {1} 올랐습니다!!", stat1, stat2);
+                    break;
+                case 1: //음식점
+                    Console.SetCursorPosition(5, 38);
+
+                    for (int i = 0; i < script.restaurant[0].Length; i++)
+                    {
+                        Console.Write(script.restaurant[0][i]);
+                        Thread.Sleep(50);
+                    }
+
+                    Console.SetCursorPosition(5, 41);
+
+                    for (int i = 0; i < script.restaurant[1].Length; i++)
+                    {
+                        if (script.restaurant[1][i] == '.')
+                        {
+                            Console.Write(script.restaurant[1][i]);
+                            Thread.Sleep(800);
+                        }
+                        else
+                        {
+                            Console.Write(script.restaurant[1][i]);
+                            Thread.Sleep(50);
+                        }
+                    }
+                    state.stress -= 20;
+                    state.charm += stat2+10;
+                    screen.ClearScreen();
+                    Console.SetCursorPosition(5, 38);
+                    Console.Write("맛있는 하루를 보내고 스트레스를 받지 않고, 매력이 {0} 올랐습니다!!", stat2+10);
+                    break;
+                case 2: //옷가게
+                    Console.SetCursorPosition(5, 38);
+
+                    for (int i = 0; i < script.shopping[0].Length; i++)
+                    {
+                        Console.Write(script.shopping[0][i]);
+                        Thread.Sleep(50);
+                    }
+
+                    Console.SetCursorPosition(5, 41);
+
+                    for (int i = 0; i < script.shopping[1].Length; i++)
+                    {
+                        if (script.shopping[1][i] == '.')
+                        {
+                            Console.Write(script.shopping[1][i]);
+                            Thread.Sleep(800);
+                        }
+                        else
+                        {
+                            Console.Write(script.shopping[1][i]);
+                            Thread.Sleep(50);
+                        }
+                    }
+                    state.charm += stat2+20;
+                    screen.ClearScreen();
+                    Console.SetCursorPosition(5, 38);
+                    Console.Write("멋있는 하루를 보내고 매력이 무려 {0} 올랐습니다!!", stat2+20);
+                    break;
+                case 3: //서점
+                    Console.SetCursorPosition(5, 38);
+
+                    for (int i = 0; i < script.bookStore[0].Length; i++)
+                    {
+                        Console.Write(script.bookStore[0][i]);
+                        Thread.Sleep(50);
+                    }
+
+                    Console.SetCursorPosition(5, 41);
+
+                    for (int i = 0; i < script.bookStore[1].Length; i++)
+                    {
+                        if (script.bookStore[1][i] == '.')
+                        {
+                            Console.Write(script.bookStore[1][i]);
+                            Thread.Sleep(800);
+                        }
+                        else
+                        {
+                            Console.Write(script.bookStore[1][i]);
+                            Thread.Sleep(50);
+                        }
+                    }
+                    state.intelligence += stat1;
+                    state.charm += stat2;
+                    screen.ClearScreen();
+                    Console.SetCursorPosition(5, 38);
+                    Console.Write("똑똑한 하루를 보내고 지능이 {0}, 매력이 {1} 올랐습니다!!", stat1,stat2);
+                    break;
+                default:
+                    break;
+            }
+            Thread.Sleep(800);
+            Console.SetCursorPosition(5, 41);
+
+            for (int i = 0; i < script.downtown[2].Length; i++)
+            {
+                Console.Write(script.downtown[2][i]);
+                Thread.Sleep(50);
+            }
+            state.stress += 20;
+            state.downtownCount++;
+            screen.ClickNext();
         }
 
         //지성 상승이 주가 되는 세번째 선택지 진행 내용
@@ -126,7 +291,7 @@ namespace _2023Maker
                 Console.Write(script.school[3][i]);
                 Thread.Sleep(50);
                 if (script.school[3][i] == '.')
-                {                    
+                {
                     Thread.Sleep(500);
                 }
             }
@@ -140,9 +305,9 @@ namespace _2023Maker
         public void FourthDailyOption<T>(ref T state) where T : State
         {
             Random random = new Random();
-            int dice = random.Next(1,4);
-            string script1 = "봉사활동을 무난하게 끝마쳐 도덕성이 20 올랐습니다!"; 
-            string script2 = "봉사활동에 열심히 참여하여 도덕성이 무려 30 올랐습니다!";
+            int dice = random.Next(1, 3);
+            string script1 = "봉사활동을 무난하게 끝마쳐 도덕성이 30 올랐습니다!";
+            string script2 = "봉사활동에 열심히 참여하여 도덕성이 무려 40 올랐습니다!";
 
             screen.ClearScreen();
             Console.SetCursorPosition(5, 38);
@@ -183,14 +348,14 @@ namespace _2023Maker
             screen.ClearUnder();
 
             Console.SetCursorPosition(5, 38);
-            if (dice < 3)
+            if (dice < 2)
             {
                 for (int i = 0; i < script1.Length; i++)
                 {
                     Console.Write(script1[i]);
                     Thread.Sleep(50);
                 }
-                state.morality += 20;
+                state.morality += 30;
             }
             else        // 대성공
             {
@@ -199,7 +364,7 @@ namespace _2023Maker
                     Console.Write(script2[i]);
                     Thread.Sleep(50);
                 }
-                state.morality += 30;
+                state.morality += 40;
             }
 
             Console.SetCursorPosition(5, 41);
