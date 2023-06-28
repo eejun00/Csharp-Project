@@ -42,6 +42,9 @@ namespace _2023Maker
                 screen.Status(state);
                 screen.PrintBigOption(daily);
 
+                screen.ClearScreen();
+                screen.MainScreen();
+                ending.DictatorEnd();
 
                 while (state.date < ending.endDate)
                 {
@@ -150,7 +153,7 @@ namespace _2023Maker
 
                 screen.ClearScreen();
                 screen.MainScreen();
-                ending.CompareStatForEnding(state);
+                //ending.CompareStatForEnding(state);
 
                 screen.ClickNext();
 

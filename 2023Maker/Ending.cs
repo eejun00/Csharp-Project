@@ -37,6 +37,7 @@ namespace _2023Maker
             {
                 if (state.strength >= 80 && stats[3] >= 30 && counts[3] >=1)
                 {
+                    HeroEnd();
                     //용사 엔딩
                 }
                 else if (state.strength >= 80 && state.stressFull && state.schoolCount == 0 && state.volunteerCount == 0)
@@ -156,21 +157,12 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
-            Console.SetCursorPosition(5, 38);
 
-            for (int i = 0; i < script.common[0].Length; i++)
-            {
-                Console.Write(script.common[0][i]);
-                Thread.Sleep(50);
-            }
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.common[0]);
 
             Console.SetCursorPosition(5, 41);
-
-            for (int i = 0; i < script.common[1].Length; i++)
-            {
-                Console.Write(script.common[1][i]);
-                Thread.Sleep(50);
-            }
+            script.PrintOneAtTime(script.common[1]);
 
             screen.ClickNext();
             screen.ClearUnder();
@@ -190,61 +182,226 @@ namespace _2023Maker
 
             Console.SetCursorPosition(5, 41);
 
-            for (int i = 0; i < script.common[3].Length; i++)
-            {
-                Console.Write(script.common[3][i]);
-                Thread.Sleep(50);
-            }
+            script.PrintOneAtTime(script.common[3]);
         }
 
         public void HeroEnd() //용사 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.hero[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.hero[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.hero[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.hero[3]);
         }
 
         public void BlackGaurdEnd() //불량배 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.blackGuard[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.blackGuard[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.blackGuard[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.blackGuard[3]);
         }
 
         public void HermitEnd() //은둔 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.hermit[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.hermit[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.hermit[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.hermit[3]);
         }
 
         public void MercenaryEnd() //용병 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.mersenary[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.mersenary[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.mersenary[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.mersenary[3]);
         }
 
         public void TopstarEnd() //톱스타 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.topStar[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.topStar[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.topStar[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.topStar[3]);
         }
 
         public void HarlemEnd() //주점 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.harlem[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.harlem[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.harlem[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.harlem[3]);
         }
 
         public void ClownEnd() // 광대 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.clown[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.clown[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.clown[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.clown[3]);
         }
 
         public void MascotEnd() // 마스코트 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.mascot[0]);
+
+            Console.SetCursorPosition(5, 41);
+            for (int i = 0; i < script.mascot[1].Length; i++)
+            {
+
+                Console.Write(script.mascot[1][i]);
+                if (script.mascot[1][i] == ',')
+                {
+                    Console.SetCursorPosition(5, 43);
+                }
+                Thread.Sleep(50);
+            }
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(4, 38);
+            script.PrintOneAtTime(script.mascot[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.mascot[3]);
         }
 
         public void AdvisorEnd() // 군사,참모 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.advisor[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.advisor[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.advisor[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.advisor[3]);
         }
 
         public void DictatorEnd() // 독재자 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.dictator[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.dictator[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.dictator[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.dictator[3]);
         }
 
         public void ScholarEnd() // 학자 엔딩
