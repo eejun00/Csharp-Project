@@ -41,10 +41,10 @@ namespace _2023Maker
                 //게임 진행 메인화면 출력
                 screen.Status(state);
                 screen.PrintBigOption(daily);
-
-                screen.ClearScreen();
-                screen.MainScreen();
-                ending.DictatorEnd();
+                //ending.CompareStatForEnding(state);
+                //screen.ClearScreen();
+                //screen.MainScreen();
+                
 
                 while (state.date < ending.endDate)
                 {

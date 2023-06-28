@@ -277,7 +277,7 @@ namespace _2023Maker
                         break;
                         
                     default:
-                        Console.WriteLine("\n\n입력이 잘못되었습니다.\n");
+                        //Console.WriteLine("\n\n입력이 잘못되었습니다.\n");
                         break;
                 }
                 map1.PrintMap();

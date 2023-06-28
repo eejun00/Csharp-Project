@@ -155,6 +155,21 @@ namespace _2023Maker
             Console.Write(daily.fourthOption);
         }
 
+        public void PrintOption2(List<string> strings)
+        { 
+            Console.SetCursorPosition(12, 39);
+            Console.Write(strings[0]);
+            Console.SetCursorPosition(54, 39);
+            Console.Write(strings[1]);
+            Console.SetCursorPosition(12, 42);
+            Console.Write(strings[2]);
+            if (strings.Count > 3)
+            {
+                Console.SetCursorPosition(54, 42);
+                Console.Write(strings[3]);
+            }
+        }
+
         public bool AskAgain(string option)
         {
             daily = new Daily();
@@ -178,6 +193,32 @@ namespace _2023Maker
                 default:
                     ClearUnder();
                     PrintBigOption(daily);
+                    return false;
+            }
+        }
+
+        public bool AskAgain2(string option)
+        {
+            daily = new Daily();
+            Console.SetCursorPosition(10, 45);
+            string question = "로 결정하시겠습니까? 결정하시려면 엔터를 눌러주세요.";
+            for (int i = 0; i< option.Length; i++)
+            {
+                Console.Write(option[i]);
+                Thread.Sleep(10);
+            }
+            for (int i = 0; i< question.Length; i++)
+            {
+                Console.Write(question[i]);
+                Thread.Sleep(10);
+            }
+            System.ConsoleKeyInfo reselect = Console.ReadKey(true);
+            switch (reselect.Key)
+            {
+                case ConsoleKey.Enter:
+                    return true;
+                default:
+                    ClearUnder();                    
                     return false;
             }
         }

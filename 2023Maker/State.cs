@@ -11,7 +11,7 @@ namespace _2023Maker
         public int date = 1;    //날짜
         public int strength;//체력
         public int charm;       //매력
-        public int intelligence;//지능
+        public int intelligence = 80;//지능
         public int morality;    //인성
         public int stress;      //스트레스
 

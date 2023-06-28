@@ -12,10 +12,16 @@ namespace _2023Maker
         public int endDate = 10;
         Script script;
         ConsoleScreen screen;
+        State state;
+        public List<string> stEnding = new List<string>{ "1.용사 엔딩","2.불량배 엔딩","3.수행 엔딩","4.용병 엔딩"};
+        public List<string> chEnding = new List<string>{ "1.톱스타 엔딩","2.뒷세계 엔딩","3.광대 엔딩","4.마스코트 엔딩"};
+        public List<string> inEnding = new List<string> { "1.책사 엔딩", "2.독재자 엔딩", "3.학자 엔딩" };
+        public List<string> moEnding = new List<string> { "1.위인 엔딩", "2.사회운동가 엔딩", "3.봉사활동가 엔딩" };
 
 
         public void CompareStatForEnding<T>(T state) where T : State
         {
+            screen = new ConsoleScreen();
             int[] stats = { state.strength, state.charm, state.intelligence, state.morality }; //스탯 배열에 넣기
             int[] counts = { state.trainingCount, state.downtownCount, state.schoolCount, state.volunteerCount };
             Array.Sort(stats);
@@ -42,14 +48,17 @@ namespace _2023Maker
                 }
                 else if (state.strength >= 80 && state.stressFull && state.schoolCount == 0 && state.volunteerCount == 0)
                 {
+                    BlackGaurdEnd();
                     //불량배 엔딩
                 }
                 else if (state.strength >= 80 && state.downtownCount == 0 && state.trainingCount > 3)
                 {
+                    HarlemEnd();
                     //산속으로 수련
                 }
                 else if (state.strength >= 80)
                 {
+                    MercenaryEnd();
                     // 용병 엔딩
                 }
             }
@@ -57,18 +66,22 @@ namespace _2023Maker
             {
                 if (state.charm >= 80 && state.schoolCount > 0 && state.volunteerCount > 0 && stats[3] >= 30)
                 {
+                    TopstarEnd();
                     //톱스타 엔딩
                 }
                 else if (state.charm >=80 && state.stressFull)
                 {
+                    HarlemEnd();
                     //백스트리트 셀럽 엔딩
                 }
                 else if (state.charm >= 80 && state.schoolCount == 0)
                 {
+                    ClownEnd();
                     //광대 엔딩
                 }              
                 else if ((state.charm >= 80))
                 {
+                    MascotEnd();
                     //마스코트 엔딩
                 }
             }
@@ -76,14 +89,17 @@ namespace _2023Maker
             {
                 if (state.intelligence >= 80 && state.volunteerCount > 0 && stats[3] >= 30)
                 {
+                    AdvisorEnd();
                     //왕국 군사 엔딩
                 }
                 else if (state.intelligence >= 80 && state.stressFull && state.morality <= 30)
                 {
+                    DictatorEnd();
                     //독재자 엔딩
                 }
                 else if(state.intelligence >= 80)
                 {
+                    ScholarEnd();
                     //학자 엔딩
                 }
             }
@@ -103,13 +119,21 @@ namespace _2023Maker
                 }
             }
 
+            screen.ClickNext();
+            screen.ClearUnder();
+            SelectOtherEnd(stats[0]);
+            screen.ClickNext();
+            screen.ClearScreen();
+
         }
+       
         public void KingEnd() //왕 엔딩
         {
             //메인화면 프린트
             //스크립트창 프린트
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
             Console.SetCursorPosition(5, 38);
 
             for (int i = 0; i < script.king[0].Length; i++)
@@ -158,6 +182,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
 
+            screen.ClearScreen();
+
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.common[0]);
 
@@ -190,6 +216,7 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
 
+            screen.ClearScreen();
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.hero[0]);
 
@@ -210,6 +237,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.blackGuard[0]);
@@ -231,6 +259,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.hermit[0]);
@@ -252,6 +281,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.mersenary[0]);
@@ -273,6 +303,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.topStar[0]);
@@ -294,6 +325,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.harlem[0]);
@@ -315,6 +347,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.clown[0]);
@@ -336,6 +369,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.mascot[0]);
@@ -366,6 +400,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.advisor[0]);
@@ -387,6 +422,7 @@ namespace _2023Maker
         {
             script = new Script();
             screen = new ConsoleScreen();
+            screen.ClearScreen();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.dictator[0]);
@@ -406,7 +442,24 @@ namespace _2023Maker
 
         public void ScholarEnd() // 학자 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
+            screen.ClearScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.scholar[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.scholar[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.scholar[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.scholar[3]);
         }
 
         public void GreatEnd() //위인 엔딩
@@ -422,6 +475,238 @@ namespace _2023Maker
         public void volunteerEnd() //봉사활동가 엔딩
         {
 
+        }
+
+        public void SelectOtherEnd(int highStat)
+        {
+            string question = "클리어한 엔딩과 비슷한 루트의 엔딩도 보시겠어요? (Q입력시 종료)";
+            script = new Script();
+            screen = new ConsoleScreen();
+            state = new State();
+            char stat = default;
+
+            Console.SetCursorPosition(12, 37);
+            script.PrintOneAtTime(question);
+
+            if(highStat == state.strength)
+            {
+                screen.PrintOption2(stEnding);
+                stat = 's';
+            }
+            else if(highStat == state.charm)
+            {
+                screen.PrintOption2(chEnding);
+                stat = 'c';
+            }
+            else if(highStat == state.intelligence)
+            {
+                screen.PrintOption2(inEnding);
+                stat = 'i';
+            }
+            else if(highStat == state.morality)
+            {
+                screen.PrintOption2(moEnding);
+                stat = 'm';
+            }
+            else
+            {
+
+            }
+
+            bool answer = true;
+            bool answer2 = true;
+            while (answer2)
+            {
+                answer = true;
+                while (answer)  // 선택지를 결정할때까지 반복
+                {
+                    Console.SetCursorPosition(12, 37);
+                    script.PrintOneAtTime(question);
+
+                    if (highStat == state.strength)
+                    {
+                        screen.PrintOption2(stEnding);
+                        stat = 's';
+                    }
+                    else if (highStat == state.charm)
+                    {
+                        screen.PrintOption2(chEnding);
+                        stat = 'c';
+                    }
+                    else if (highStat == state.intelligence)
+                    {
+                        screen.PrintOption2(inEnding);
+                        stat = 'i';
+                    }
+                    else if (highStat == state.morality)
+                    {
+                        screen.PrintOption2(moEnding);
+                        stat = 'm';
+                    }
+                    else
+                    {
+
+                    }
+                    System.ConsoleKeyInfo select1 = Console.ReadKey(true);
+
+                    switch (select1.Key)
+                    {
+                        case ConsoleKey.NumPad1:
+                            if (stat == 's')
+                            {
+                                if (screen.AskAgain2(stEnding[0]))
+                                {
+                                    HeroEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'c')
+                            {
+                                if (screen.AskAgain2(chEnding[0]))
+                                {
+                                    TopstarEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'i')
+                            {
+                                if (screen.AskAgain2(inEnding[0]))
+                                {
+                                    AdvisorEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'm')
+                            {
+                                if (screen.AskAgain2(moEnding[0]))
+                                {
+                                    GreatEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            break;
+
+                        case ConsoleKey.NumPad2:
+                            if (stat == 's')
+                            {
+                                if (screen.AskAgain2(stEnding[1]))
+                                {
+                                    BlackGaurdEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'c')
+                            {
+                                if (screen.AskAgain2(chEnding[1]))
+                                {
+                                    HarlemEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'i')
+                            {
+                                if (screen.AskAgain2(inEnding[1]))
+                                {
+                                    DictatorEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'm')
+                            {
+                                if (screen.AskAgain2(moEnding[1]))
+                                {
+                                    ActivistEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            break;
+
+                        case ConsoleKey.NumPad3:
+                            if (stat == 's')
+                            {
+                                if (screen.AskAgain2(stEnding[2]))
+                                {
+                                    HermitEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'c')
+                            {
+                                if (screen.AskAgain2(chEnding[2]))
+                                {
+                                    ClownEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'i')
+                            {
+                                if (screen.AskAgain2(inEnding[2]))
+                                {
+                                    ScholarEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'm')
+                            {
+                                if (screen.AskAgain2(moEnding[2]))
+                                {
+                                    volunteerEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            break;
+
+                        case ConsoleKey.NumPad4:
+                            if (stat == 's')
+                            {
+                                if (screen.AskAgain2(stEnding[2]))
+                                {
+                                    MercenaryEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else if (stat == 'c')
+                            {
+                                if (screen.AskAgain2(chEnding[2]))
+                                {
+                                    MascotEnd();
+                                    //선택지 진행
+                                    answer = false;
+                                }
+                            }
+                            else
+                            {
+                                /*Pass*/
+                            }
+                            break;
+
+                        case ConsoleKey.Q:
+                            answer = false;
+                            answer2 = false;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (answer2)
+                {
+                    screen.ClickNext();
+                    screen.ClearUnder();                    
+                }
+            }
         }
     }
 }
