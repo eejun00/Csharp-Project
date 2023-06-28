@@ -13,6 +13,10 @@ namespace _2023Maker
 
         public string prologue = "프롤로그 내용이 주루루루루루룩";
 
+        //하루 일과 단련 스크립트
+        public List<string> training = new List<string>()
+        {"오늘은 단련을 하러 외곽으로 나갑니다.", "단련을 마치고 집으로 돌아갑니다. 힘들지만 보람찬 하루였습니다." };
+
         //하루 일과 번화가 스크립트
         public List<string> downtown = new List<string>()
         {"오늘은 번화가에 가기로 한 날입니다.", "오늘 나가서 갈 곳은 ", "오늘 하루도 알차게 보냈습니다. 집으로 돌아갈 시간이에요" };
@@ -57,7 +61,14 @@ namespace _2023Maker
         "평범한 일상을 보내며 살아갈 아이를 앞으로도 응원해주세요."
         };
 
-
+        public void PrintOneAtTime(string script)
+        {
+            for(int i = 0; i < script.Length; i++)
+            {
+                Console.Write(script[i]);
+                Thread.Sleep(50);
+            }
+        }
 
         public void PrintPrologue()
         {

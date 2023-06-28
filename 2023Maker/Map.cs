@@ -25,6 +25,11 @@ namespace _2023Maker
                         map[5, 5] = '◎';
                         continue;
                     }
+                    if ((x > 14 && x< 25) && (y >1 && y < 6)) // X(18~27) Y(2~5)
+                    {
+                        map[y, x] = '▲';
+                        continue;
+                    }
                     if ((x == 0 || y == 0)|| (x == (MAP_SIZE_X-1) || y == (MAP_SIZE_Y-1)))  // 벽
                     {
                         map[y, x] = '□';

@@ -101,7 +101,9 @@ namespace _2023Maker
             Console.SetCursorPosition(6, 40);
             //Console.Write("적의 체력 : {0} 적의 공격력 : {1}        나의 체력 : {2} 나의 공격력 {3}\n", monsterHp, monsterAttack, playerHp, playerAttack);
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(28, 41);
             Console.Write("적과의 전투에서 승리했습니다!\n\n");
+            Thread.Sleep(500);
             Console.ResetColor();            
 
         }

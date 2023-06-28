@@ -46,15 +46,21 @@ namespace _2023Maker
             int y_axis = 5;
             int x_axis = 5;
             int surprise = default;
+            int monsterCount = default;
+            bool exit = true;
 
             screen.ClearScreen();
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.training[0]);
+            screen.ClickNext();
+            screen.ClearUnder();
             map1.CreateMap();
             map1.PrintMap();
 
            
-            while (true)
+            while (monsterCount < 3 && exit)
             {
-                Console.SetCursorPosition(5, 38);
+                
                 Console.CursorVisible = false;
                 ConsoleKeyInfo keyInput = Console.ReadKey(true); //키입력을 받고 확인하는 내용
 
@@ -73,7 +79,7 @@ namespace _2023Maker
 
                                 if (map1.map[y_axis, (x_axis-1)] == '▲') // 산에 도착할 경우
                                 {
-                                    if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                    if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                     {
                                         map1.map[y_axis, x_axis] = '▲';
                                         map1.map[y_axis, --x_axis] = PLAYER;
@@ -84,9 +90,10 @@ namespace _2023Maker
                                         map1.map[y_axis, --x_axis] = PLAYER;
                                     }
                                     surprise = random.Next(1, 101);
-                                    if (surprise <= 17)
+                                    if (surprise <= 14)
                                     {
                                         battle1.BattleStart(ref playerHp);
+                                        monsterCount++;
                                         screen.ClearScreen();
                                     }
 
@@ -94,7 +101,7 @@ namespace _2023Maker
 
                                 else //그냥 이동시
                                 {
-                                    if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                    if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                     {
                                         map1.map[y_axis, x_axis] = '▲';
                                         map1.map[y_axis, --x_axis] = PLAYER;
@@ -118,7 +125,7 @@ namespace _2023Maker
 
                             if (map1.map[y_axis, (x_axis+1)] == '▲') // 산에 도착할 경우
                             {
-                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                 {
                                     map1.map[y_axis, x_axis] = '▲';
                                     map1.map[y_axis, ++x_axis] = PLAYER;
@@ -129,16 +136,17 @@ namespace _2023Maker
                                     map1.map[y_axis, ++x_axis] = PLAYER;
                                 }
                                 surprise = random.Next(1, 101);
-                                if (surprise <= 17)
+                                if (surprise <= 14)
                                 {
                                     battle1.BattleStart(ref playerHp);
+                                    monsterCount++;
                                     screen.ClearScreen();
                                 }
 
                             }
                             else
                             {
-                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                 {
                                     map1.map[y_axis, x_axis] = '▲';
                                     map1.map[y_axis, ++x_axis] = PLAYER;
@@ -167,7 +175,7 @@ namespace _2023Maker
                             if (map1.map[(y_axis-1), x_axis] == '▲')
                             {
                                 surprise = random.Next(1, 101);
-                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                 {
                                     map1.map[y_axis, x_axis] = '▲';
                                     map1.map[--y_axis, x_axis] = PLAYER;
@@ -177,16 +185,17 @@ namespace _2023Maker
                                     map1.map[y_axis, x_axis] = 'ㅤ';
                                     map1.map[--y_axis, x_axis] = PLAYER;
                                 }
-                                if (surprise <= 17)
+                                if (surprise <= 14)
                                 {
                                     battle1.BattleStart(ref playerHp);
+                                        monsterCount++;
                                     screen.ClearScreen();
                                 }
 
                             }
                             else
                             {
-                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                 {
                                     map1.map[y_axis, x_axis] = '▲';
                                     map1.map[--y_axis, x_axis] = PLAYER;
@@ -209,7 +218,7 @@ namespace _2023Maker
                             if (map1.map[(y_axis+1), x_axis] == '▲')
                             {
                                 surprise = random.Next(1, 101);
-                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                 {
                                     map1.map[y_axis, x_axis] = '▲';
                                     map1.map[++y_axis, x_axis] = PLAYER;
@@ -219,16 +228,17 @@ namespace _2023Maker
                                     map1.map[y_axis, x_axis] = 'ㅤ';
                                     map1.map[++y_axis, x_axis] = PLAYER;
                                 }
-                                if (surprise <= 17)
+                                if (surprise <= 14)
                                 {
                                     battle1.BattleStart(ref playerHp);
+                                        monsterCount++;
                                     screen.ClearScreen();
                                 }
 
                             }
                             else
                             {
-                                if ((x_axis > 17 && x_axis< 28) && (y_axis >1 && y_axis < 6))
+                                if ((x_axis > 14 && x_axis< 28) && (y_axis >1 && y_axis < 6))
                                 {
                                     map1.map[y_axis, x_axis] = '▲';
                                     map1.map[++y_axis, x_axis] = PLAYER;
@@ -251,12 +261,43 @@ namespace _2023Maker
                     //    Thread.Sleep(2000);
                     //    Console.Clear();
                     //    break;
+                    case ConsoleKey.Q:
+                        string question = "단련을 중단하고 집으로 돌아가시겠습니까? (돌아가려면 Y)";
+                        Console.SetCursorPosition(15, 41);
+                        script.PrintOneAtTime(question);
+                        ConsoleKeyInfo ans = Console.ReadKey(true);
+                        switch(ans.Key)
+                        {
+                            case ConsoleKey.Y:
+                                exit = false;
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                        
                     default:
                         Console.WriteLine("\n\n입력이 잘못되었습니다.\n");
                         break;
                 }
                 map1.PrintMap();
             }
+            screen.ClearScreen();
+            Console.SetCursorPosition(5, 38);
+            if (monsterCount == 3)
+            {                
+                Console.Write("단련을 마치고 체력이 {0} 올랐습니다!!", 40);
+                state.strength += 40;
+            }
+            else
+            {
+                Console.Write("단련을 마치고 체력이 {0} 올랐습니다!!", monsterCount*10);
+                state.strength += 10*monsterCount;
+            }           
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.training[1]);
+            screen.ClickNext();
+            
         }
 
         //매력 상승이 주가 되는 두번째 선택지 진행 내용
