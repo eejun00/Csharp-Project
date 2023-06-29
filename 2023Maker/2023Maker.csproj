@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Art.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="Daily.cs" />
     <Compile Include="ConsoleScreen.cs" />

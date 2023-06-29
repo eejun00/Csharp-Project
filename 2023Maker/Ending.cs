@@ -107,14 +107,17 @@ namespace _2023Maker
             {
                 if (state.morality >= 80 && state.schoolCount > 0 && stats[3] >= 30)
                 {
+                    GreatEnd();
                     //위인 엔딩
                 }
                 else if(state.morality >=80 && state.stressFull)
                 {
+                    ActivistEnd();
                     //사회 운동가 엔딩
                 }
                 else if(state.morality >= 80)
                 {
+                    volunteerEnd();
                     //봉사활동가 엔딩
                 }
             }
@@ -464,17 +467,68 @@ namespace _2023Maker
 
         public void GreatEnd() //위인 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
+            screen.ClearScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.great[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.great[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.great[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.great[3]);
         }
 
         public void ActivistEnd() //사회활동가 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
+            screen.ClearScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.activist[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.activist[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.activist[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.activist[3]);
         }
 
         public void volunteerEnd() //봉사활동가 엔딩
         {
+            script = new Script();
+            screen = new ConsoleScreen();
+            screen.ClearScreen();
 
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.volunteerStr[0]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.volunteerStr[1]);
+
+            screen.ClickNext();
+            screen.ClearUnder();
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.volunteerStr[2]);
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.volunteerStr[3]);
         }
 
         public void SelectOtherEnd(int highStat)

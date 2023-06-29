@@ -24,27 +24,27 @@ namespace _2023Maker
             Daily daily = new Daily();
             Ending ending = new Ending();
             Map map = new Map();
+            Art art = new Art();
 
             //게임 화면이 잘보이게 하기위해 콘솔 사이즈 조정
             Console.SetWindowSize(150, 50);
-
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            
             while (true)
             {
                 // 게임 시작 화면
                 screen.StartScreen();
 
                 //게임 프롤로그 구현
-                screen.MainScreen();
+                screen.MainScreen();               
                 script.PrintPrologue();
+                screen.ClearScreen();
 
 
                 //게임 진행 메인화면 출력
                 screen.Status(state);
-                screen.PrintBigOption(daily);
-                //ending.CompareStatForEnding(state);
-                //screen.ClearScreen();
-                //screen.MainScreen();
-                
+                art.PrintFirstRabbit();                
+                screen.PrintBigOption(daily);                              
 
                 while (state.date < ending.endDate)
                 {
@@ -147,13 +147,25 @@ namespace _2023Maker
                     screen.ClearScreen();
                     screen.Status(state);
                     screen.MainScreen();
+                    if(state.date < 5)
+                    {
+                        art.PrintFirstRabbit();
+                    }
+                    else if(state.date == 5)
+                    {
+                        art.PrintGrowUP();
+                    }
+                    else
+                    {
+                        art.PrintSecondRabbit();
+                    }
                     screen.PrintBigOption(daily);
 
                 }
 
                 screen.ClearScreen();
                 screen.MainScreen();
-                //ending.CompareStatForEnding(state);
+                ending.CompareStatForEnding(state);
 
                 screen.ClickNext();
 
@@ -217,4 +229,3 @@ namespace _2023Maker
         }
     }
 }
-

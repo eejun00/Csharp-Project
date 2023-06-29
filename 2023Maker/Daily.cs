@@ -14,6 +14,7 @@ namespace _2023Maker
 
         Script script = new Script();
         ConsoleScreen screen = new ConsoleScreen();
+        Art art = new Art();
 
         public List<string> place = new List<string>() { "체육관", "음식점", "옷가게", "서점" };
         public List<string> subjects = new List<string>() { "체육", "미술", "학문", "예법" };
@@ -309,7 +310,7 @@ namespace _2023Maker
             int todayPlace = default;
             todayPlace = random.Next(0, place.Count);
 
-            screen.ClearScreen();
+            screen.ClearUnder();
             Console.SetCursorPosition(5, 38);
 
             for (int i = 0; i < script.downtown[0].Length; i++)
@@ -327,8 +328,11 @@ namespace _2023Maker
             }
             Console.Write("* {0} *입니다.", place[todayPlace]);
 
+            Thread.Sleep(300);
+            screen.ClearOver();
+            art.PrintJumpRabbit();
             screen.ClickNext();
-            screen.ClearScreen();
+            screen.ClearUnder();;
 
             switch (todayPlace)
             {
@@ -359,7 +363,7 @@ namespace _2023Maker
                     state.strength += stat1;
                     state.charm += stat2;
 
-                    screen.ClearScreen();
+                    screen.ClearUnder();
                     Console.SetCursorPosition(5, 38);
                     Console.Write("보람찬 하루를 보내고 체력이 {0}, 매력이 {1} 올랐습니다!!", stat1, stat2);
                     break;
@@ -389,7 +393,7 @@ namespace _2023Maker
                     }
                     state.stress -= 20;
                     state.charm += stat2+10;
-                    screen.ClearScreen();
+                    screen.ClearUnder();
                     Console.SetCursorPosition(5, 38);
                     Console.Write("맛있는 하루를 보내고 스트레스를 받지 않고, 매력이 {0} 올랐습니다!!", stat2+10);
                     break;
@@ -418,7 +422,7 @@ namespace _2023Maker
                         }
                     }
                     state.charm += stat2+20;
-                    screen.ClearScreen();
+                    screen.ClearUnder();
                     Console.SetCursorPosition(5, 38);
                     Console.Write("멋있는 하루를 보내고 매력이 무려 {0} 올랐습니다!!", stat2+20);
                     break;
@@ -448,7 +452,7 @@ namespace _2023Maker
                     }
                     state.intelligence += stat1;
                     state.charm += stat2;
-                    screen.ClearScreen();
+                    screen.ClearUnder();
                     Console.SetCursorPosition(5, 38);
                     Console.Write("똑똑한 하루를 보내고 지능이 {0}, 매력이 {1} 올랐습니다!!", stat1,stat2);
                     break;
@@ -475,7 +479,7 @@ namespace _2023Maker
             int subNum = default;
             int stat1 = 10;
             int stat2 = 20;
-            screen.ClearScreen();
+            screen.ClearUnder();
             Console.SetCursorPosition(5, 38);
 
             subNum = random.Next(0, subjects.Count);
@@ -499,6 +503,9 @@ namespace _2023Maker
 
             screen.ClickNext();
             screen.ClearScreen();
+            art.PrintStudyRabbit();
+            art.PrintAIng();
+
 
             Console.SetCursorPosition(28, 41);
             for (int i = 0; i < script.school[2].Length; i++)
@@ -591,6 +598,7 @@ namespace _2023Maker
 
             screen.ClickNext();
             screen.ClearScreen();
+            art.PrintVolunteer();
 
             Console.SetCursorPosition(28, 41);
             for (int i = 0; i < script.volunteer[2].Length; i++)
@@ -642,11 +650,12 @@ namespace _2023Maker
             screen.ClickNext();
         }
 
-        // 휴식하기 진행 함수
+        // 휴식하기 진행 함수 완성
         public void DailyOptionTwo<T>(ref T state) where T : State
         {
 
             screen.ClearScreen();
+            art.PrintSleep();
             Console.SetCursorPosition(5, 38);
 
             for (int i = 0; i < script.optionTwo.Length; i++)
@@ -654,7 +663,7 @@ namespace _2023Maker
                 Console.Write(script.optionTwo[i]);
                 Thread.Sleep(50);
             }
-
+            art.PrintZ();
             screen.ClickNext();
 
             if (state.stress < 50)
@@ -710,3 +719,7 @@ namespace _2023Maker
         }
     }
 }
+
+
+
+

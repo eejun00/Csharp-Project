@@ -9,7 +9,7 @@ namespace _2023Maker
     public class State
     {
         public int date = 1;    //날짜
-        public int strength;//체력
+        public int strength;    //체력
         public int charm;       //매력
         public int intelligence = 80;//지능
         public int morality;    //인성

@@ -51,6 +51,15 @@ namespace _2023Maker
             }
         }
 
+        public void ClearOver() //위 콘솔창만 지우기
+        {
+            for (int i = 0; i< 30; i++)
+            {
+                Console.SetCursorPosition(4, i+6);
+                Console.WriteLine("                                                                              ");
+            }
+        }
+
         //게임 진행 스크립트 넘길때 입력이 필요한 경우 사용
         public void ClickNext()
         {
