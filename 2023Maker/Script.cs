@@ -21,7 +21,7 @@ namespace _2023Maker
 
         //하루 일과 번화가 스크립트
         public List<string> downtown = new List<string>()
-        {"오늘은 번화가에 가기로 한 날입니다.", "오늘 나가서 갈 곳은 ", "오늘 하루도 알차게 보냈습니다. 집으로 돌아갈 시간이에요" };
+        {"오늘은 번화가에 가기로 한 날입니다.", "오늘 나가서 갈 곳은 ", "오늘 하루도 알차게 보냈습니다. 집으로 돌아갈 시간이에요." };
         public List<string> gym = new List<string>()
         { "다른 친구들과 함께 뛰어 놀며 즐기고 있습니다." , "하루를 보내는 중 . . . ."};
         public List<string> restaurant = new List<string>()

@@ -23,7 +23,7 @@ namespace _2023Maker
         public string optionOne = "1.외출하기";
         public string optionTwo = "2.휴식하기";
         public string optionThree = "3.대화나누기";
-        public string optionFour = "4.미정";
+        public string optionFour = "4.우주최강쁘띠큐티이미정";
 
 
         //하루 일과 진행옵션의 세부
@@ -579,7 +579,7 @@ namespace _2023Maker
             string script1 = "봉사활동을 무난하게 끝마쳐 도덕성이 30 올랐습니다!";
             string script2 = "봉사활동에 열심히 참여하여 도덕성이 무려 40 올랐습니다!";
 
-            screen.ClearScreen();
+            screen.ClearUnder();
             Console.SetCursorPosition(5, 38);
 
             for (int i = 0; i < script.volunteer[0].Length; i++)

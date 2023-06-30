@@ -43,7 +43,8 @@ namespace _2023Maker
 
                 //게임 진행 메인화면 출력
                 screen.Status(state);
-                art.PrintFirstRabbit();                
+                art.PrintFireCracker();
+                art.PrintGreat();
                 screen.PrintBigOption(daily);                              
 
                 while (state.date < ending.endDate)
