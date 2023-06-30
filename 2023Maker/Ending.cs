@@ -12,7 +12,8 @@ namespace _2023Maker
         public int endDate = 10;
         Script script;
         ConsoleScreen screen;
-        State state;
+        State state = new State();
+        Art art = new Art();
         public List<string> stEnding = new List<string>{ "1.용사 엔딩","2.불량배 엔딩","3.수행 엔딩","4.용병 엔딩"};
         public List<string> chEnding = new List<string>{ "1.톱스타 엔딩","2.뒷세계 엔딩","3.광대 엔딩","4.마스코트 엔딩"};
         public List<string> inEnding = new List<string> { "1.책사 엔딩", "2.독재자 엔딩", "3.학자 엔딩" };
@@ -28,7 +29,7 @@ namespace _2023Maker
             Array.Reverse(stats);   //큰 순으로 정리
             Array.Sort(counts);
             Array.Reverse(counts);   //큰 순으로 정리
-
+            int[] stats_ = { state.strength, state.charm, state.intelligence, state.morality };
             if (stats[3] >= 70 && counts[3] >= 1)
             {
                 KingEnd();
@@ -124,7 +125,7 @@ namespace _2023Maker
 
             screen.ClickNext();
             screen.ClearUnder();
-            SelectOtherEnd(stats[0]);
+            SelectOtherEnd(stats[0],stats_);
             screen.ClickNext();
             screen.ClearScreen();
 
@@ -137,6 +138,9 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+
+            art.PrintKing();
+
             Console.SetCursorPosition(5, 38);
 
             for (int i = 0; i < script.king[0].Length; i++)
@@ -187,6 +191,8 @@ namespace _2023Maker
 
             screen.ClearScreen();
 
+            art.PrintSecondRabbit();
+
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.common[0]);
 
@@ -220,6 +226,9 @@ namespace _2023Maker
             screen = new ConsoleScreen();
 
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintHero();
+            
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.hero[0]);
 
@@ -241,6 +250,7 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintBlackGuard();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.blackGuard[0]);
@@ -263,6 +273,7 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintHermit();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.hermit[0]);
@@ -285,6 +296,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintMercenary();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.mersenary[0]);
@@ -307,6 +320,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintTopstar();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.topStar[0]);
@@ -329,6 +344,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintHarlem();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.harlem[0]);
@@ -351,6 +368,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintClown();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.clown[0]);
@@ -373,7 +392,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
-
+            art.PrintFireCracker();
+            art.PrintMascot();
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.mascot[0]);
 
@@ -404,6 +424,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintAdvisor();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.advisor[0]);
@@ -426,6 +448,7 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintDictator();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.dictator[0]);
@@ -448,6 +471,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintSchola();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.scholar[0]);
@@ -470,6 +495,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintGreat();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.great[0]);
@@ -492,6 +519,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintActivist();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.activist[0]);
@@ -514,6 +543,8 @@ namespace _2023Maker
             script = new Script();
             screen = new ConsoleScreen();
             screen.ClearScreen();
+            art.PrintFireCracker();
+            art.PrintVolunteer();
 
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.volunteerStr[0]);
@@ -531,33 +562,33 @@ namespace _2023Maker
             script.PrintOneAtTime(script.volunteerStr[3]);
         }
 
-        public void SelectOtherEnd(int highStat)
+        public void SelectOtherEnd(int highStat, int[] stats_)
         {
             string question = "클리어한 엔딩과 비슷한 루트의 엔딩도 보시겠어요? (Q입력시 종료)";
             script = new Script();
             screen = new ConsoleScreen();
-            state = new State();
+            
             char stat = default;
 
             Console.SetCursorPosition(12, 37);
             script.PrintOneAtTime(question);
 
-            if(highStat == state.strength)
+            if(highStat == stats_[0])
             {
                 screen.PrintOption2(stEnding);
                 stat = 's';
             }
-            else if(highStat == state.charm)
+            else if(highStat == stats_[1])
             {
                 screen.PrintOption2(chEnding);
                 stat = 'c';
             }
-            else if(highStat == state.intelligence)
+            else if(highStat == stats_[2])
             {
                 screen.PrintOption2(inEnding);
                 stat = 'i';
             }
-            else if(highStat == state.morality)
+            else if(highStat == stats_[3])
             {
                 screen.PrintOption2(moEnding);
                 stat = 'm';
@@ -577,22 +608,22 @@ namespace _2023Maker
                     Console.SetCursorPosition(12, 37);
                     script.PrintOneAtTime(question);
 
-                    if (highStat == state.strength)
+                    if (highStat == stats_[0])
                     {
                         screen.PrintOption2(stEnding);
                         stat = 's';
                     }
-                    else if (highStat == state.charm)
+                    else if (highStat == stats_[1])
                     {
                         screen.PrintOption2(chEnding);
                         stat = 'c';
                     }
-                    else if (highStat == state.intelligence)
+                    else if (highStat == stats_[2])
                     {
                         screen.PrintOption2(inEnding);
                         stat = 'i';
                     }
-                    else if (highStat == state.morality)
+                    else if (highStat == stats_[3])
                     {
                         screen.PrintOption2(moEnding);
                         stat = 'm';

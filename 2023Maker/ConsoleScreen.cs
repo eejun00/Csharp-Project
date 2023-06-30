@@ -11,18 +11,24 @@ namespace _2023Maker
     {
         State state;
         Daily daily;
+        Art art = new Art();
 
         //큰 화면 프린트 시작 (4,6) //큰 화면 프린트 끝 (80,35)
         //밑 화면 프린트 시작 (4,37) //밑 화면 프린트 끝 (80,46)
         public void StartScreen()   // 시작화면 기능만 있음. 시간날때 꾸미기
         {
-            Console.SetCursorPosition(15, 30);
+            art.PrintStart();
+            Console.SetCursorPosition(10, 30);
+            Console.WriteLine("        조작키 :    엔터, 넘버패드 1,2,3,4 ");
+            Console.SetCursorPosition(10, 32);
+            Console.WriteLine("이 화면 이후로 게임 화면 크키를 재설정하지 말아 주세요.");
+            Console.SetCursorPosition(20, 34);          
             Console.WriteLine("Press any key to start the game");
-            Console.ReadKey();
+            Console.ReadKey(true);
             Console.SetCursorPosition(0, 0);
             for (int i = 0; i < 35; i++)
             {
-                Console.WriteLine("                                                                                                                                                                                                                     ");
+                Console.WriteLine("                                                                                                                                                                                                                                                                 ");
                 Thread.Sleep(20);
             }
         }
