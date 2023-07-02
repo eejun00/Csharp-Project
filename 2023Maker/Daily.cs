@@ -23,7 +23,7 @@ namespace _2023Maker
         public string optionOne = "1.외출하기";
         public string optionTwo = "2.휴식하기";
         public string optionThree = "3.대화나누기";
-        public string optionFour = "4.우주최강쁘띠큐티이미정";
+        public string optionFour = "4.조언듣기";
 
 
         //하루 일과 진행옵션의 세부
@@ -53,6 +53,8 @@ namespace _2023Maker
             screen.ClearScreen();
             Console.SetCursorPosition(5, 38);
             script.PrintOneAtTime(script.training[0]);
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.training[1]);
             screen.ClickNext();
             screen.ClearUnder();
             map1.CreateMap();
@@ -296,7 +298,7 @@ namespace _2023Maker
                 state.strength += 10*monsterCount;
             }           
             Console.SetCursorPosition(5, 41);
-            script.PrintOneAtTime(script.training[1]);
+            script.PrintOneAtTime(script.training[2]);
             screen.ClickNext();
             
         }
@@ -682,12 +684,11 @@ namespace _2023Maker
         {
             int num = default;
             Random random = new Random();
-            screen.ClearScreen();
+            screen.ClearUnder();
             Console.SetCursorPosition(5, 38);
 
             num = random.Next(0, script.mytalks.Count);
 
-            Console.Write("나 : ");
             for (int i = 0; i < script.mytalks[num].Length; i++)
             {
                 Console.Write(script.mytalks[num][i]);
@@ -696,8 +697,20 @@ namespace _2023Maker
 
             screen.ClickNext();
 
+            if(num == 0)
+            {
+                art.PrintHeart();
+            }
+            else if(num == 1)
+            {
+                art.PrintNote();
+            }
+            else 
+            {
+                art.PrintCarrot();
+            }
+
             Console.SetCursorPosition(5, 41);
-            Console.Write("아이 : ");
 
             for (int i = 0; i < script.replys[num].Length; i++)
             {
@@ -716,6 +729,29 @@ namespace _2023Maker
 
 
             screen.ClickNext();
+            screen.ClearScreen();
+        }
+        public void DailyOptionFour<T>(T script) where T : Script
+        {
+            int num = default;
+            int num2 = default;
+            Random random = new Random();
+            screen.ClearUnder();
+            
+
+            num = random.Next(0, script.advice.Count/2);
+            num2 = random.Next(script.advice.Count/2, script.advice.Count);
+
+            Console.SetCursorPosition(5, 38);
+            script.PrintOneAtTime(script.advice[num]);
+
+            screen.ClickNext();
+
+            Console.SetCursorPosition(5, 41);
+            script.PrintOneAtTime(script.advice[num2]);
+
+            screen.ClickNext();
+            screen.ClearScreen();
         }
     }
 }

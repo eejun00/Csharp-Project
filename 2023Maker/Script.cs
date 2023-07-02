@@ -10,14 +10,19 @@ namespace _2023Maker
     public class Script
     {
         ConsoleScreen screen;
+        Art art;
 
-        public string prologue = "프롤로그 내용이 주루루루루루룩";
+        public List<string> prologue = new List<string>() {"당신은 언제나 처럼 하루를 보내고 집으로 돌아가던 중이었습니다.",
+        "길을 걷던 도중, 수풀에서 소리가 들려 옆을 보았고,","그곳에는 작고 귀여운 토끼가 당신을 바라보고 있었습니다.",
+        "토끼와 잠시 눈을 마주치자 토끼는 사라졌고, 당신은 그대로 집으로 돌아왔습니다.",
+        "\"이 아이를 도와주세요.\""," \"...!\"","갑자기 들려온 목소리에 주변을 둘러보니,","바닥엔 아까 마주친 토끼가 있었습니다.",
+        "귀여운 토끼를 내버려둘수 없었던 당신은, 오늘부터 토끼와 함께 지내기로 합니다."};
 
         public string growUp = "아이가 시간이 지남에 따라 성장했습니다!!";
 
         //하루 일과 단련 스크립트
         public List<string> training = new List<string>()
-        {"오늘은 단련을 하러 외곽으로 나갑니다.", "단련을 마치고 집으로 돌아갑니다... 힘들지만 보람찬 하루였습니다." };
+        {"오늘은 단련을 하러 외곽으로 나갑니다.", "중간에 그만두려면 Q를 입력해주세요.", "단련을 마치고 집으로 돌아갑니다... 힘들지만 보람찬 하루였습니다." };
 
         //하루 일과 번화가 스크립트
         public List<string> downtown = new List<string>()
@@ -43,9 +48,20 @@ namespace _2023Maker
         public string optionTwo = "아주 곤히 잠들어 편안한 하루를 보냅니다...";
 
         //대화 스크립트
-        public List<string> mytalks = new List<string>() {"말건네기1","말건네기2","말건네기3","말건네기4"}; 
-        public List<string> replys = new List<string>() { "대답1", "대답2", "대답3", "대답4"};
-        public List<string> emotion = new List<string>() { "~~해보인다.", "~~해보인다.", "~~해보인다.", "~~해보인다." };
+        public List<string> mytalks = new List<string>() {"아이에게 사랑한다고 말해주었다.","아이에게 노래를 짧게 해주었다","아이에게 당근을 좋아하냐고 물었다.",}; 
+        public List<string> replys = new List<string>() { "아이도 자신도 그렇다는듯 웃어보였다.", "내 노래를 들으며 신난 표정을 지었다.", "머릿속으로 당근을 떠올린듯한 표정이다."};
+        public List<string> emotion = new List<string>() { "아이가 행복해보인다.", "아이가 신나보인다.", "아이가 배고파보인다."};
+
+        //조언 스크립트
+        public List<string> advice = new List<string>() {"아이의 능력을 골고루 키워줄수록, 커서 좋은 아이가 됩니다.",
+        "스트레스를 적당히 조절해주지 않으면, 아이가 나쁜길로 접어들수 있습니다.",
+        "휴식을 취하면 하루가 지나가지만, 스트레스가 50 감소합니다.",
+        "봉사활동을 갈때, 운이 좋다면 평소보다 도덕성이 10이나 더 증가합니다.",
+        "번화가에서 갈 수 있는곳은 체육관, 음식점, 서점, 옷가게가 있습니다.",
+        "학교에서 배울 수 있는 과목으론 체육, 미술, 학문, 예법이 있습니다.",
+        "단련을 가서 몬스터 3마리를 전부 잡으면, 체력이 더 상승합니다.",
+        "아이는 10일이 지나면, 자신의 길을 찾아 떠나게됩니다."
+        };
 
         //엔딩 스크립트
         //왕 엔딩
@@ -176,16 +192,49 @@ namespace _2023Maker
         public void PrintPrologue()
         {
             screen = new ConsoleScreen();
-            Console.SetCursorPosition(4, 7);
-            for (int i = 0; i< prologue.Length; i++)
-            {
-                Console.Write(prologue[i]);
-                Thread.Sleep(50);
-            }
+            art = new Art();
+
+            Console.SetCursorPosition(4, 8);
+            PrintOneAtTime(prologue[0]);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(4, 11);
+            PrintOneAtTime(prologue[1]);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(4, 14);
+            PrintOneAtTime(prologue[2]);
+
+            art.PrintPrologue();
+
 
             screen.ClickNext(); // 키 입력으로 넘어가도록
 
             screen.ClearScreen();  // 키 입력시 화면 안쪽만 클리어
+
+
+            Console.SetCursorPosition(4, 8);
+            PrintOneAtTime(prologue[3]);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(4, 10);
+            PrintOneAtTime(prologue[4]);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(4, 12);
+            PrintOneAtTime(prologue[5]);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(4, 14);
+            PrintOneAtTime(prologue[6]);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(4, 16);
+            PrintOneAtTime(prologue[7]);
+
+            art.PrintPrologue2();
+            Thread.Sleep(800);
+            Console.SetCursorPosition(4, 18);
+            PrintOneAtTime(prologue[8]);
+
+            screen.ClickNext(); // 키 입력으로 넘어가도록
+
+            screen.ClearScreen();  // 키 입력시 화면 안쪽만 클리어
+
         }
 
 

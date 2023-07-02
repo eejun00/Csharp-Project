@@ -129,6 +129,8 @@ namespace _2023Maker
                                 if (screen.AskAgain(daily.optionFour))
                                 {
                                     //선택지 진행
+                                    daily.DailyOptionFour(script);
+                                    state.date -= 1;
                                     answer = false;
                                 }
                                 break;
